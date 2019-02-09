@@ -1,0 +1,13 @@
+<p> Your Created identifications, <%= @user.username %> </p>
+<% @user.identifications.each do |identification| %>
+    <%= identification.firstname %>
+    <%= identification.lastname %> 
+    <%= identification.date_of_birth %>
+    <%= identification.country_of_birth %> 
+    <%= identification.nationality %>
+    <%= identification.sex %> 
+    <%= identification.address %> 
+    <%= identification.issued_date %> 
+    <%= identification.expiry_date %>
+  <br><br>
+<% end %>

@@ -1,0 +1,45 @@
+<%# <% if (Helpers.is_logged_in? session) && (@identification == @user) %> 
+
+<div class="container">
+  <div class="table-responsive text-center">
+    <h3>Entire Identications Created by<%= @user.username %>:</h3>
+  </div>
+
+    <table class="table table-sm table-info">
+      <thead class="thead-dark">
+          <tr>
+            <%# <th>Number</th> %>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Date Of Birth</th> 
+            <th>County Of Birth</th> 
+            <th>Nationality</th>
+            <th>Sex</th>
+            <th>Address</th>
+            <th>Issued Date</th>
+            <th>Expiry Date</th>
+          </tr>
+     </thead>
+          <tr>
+            <% Identification.all.each do |identification| %>
+          
+                <%if identification.user_id == @user.id %>
+
+                  <td><%= identification.firstname %></td>
+                  <td><%= identification.lastname %></td>
+                  <td><%= identification.date_of_birth %></td>
+                  <td><%= identification.country_of_birth %></td>
+                  <td><%= identification.nationality %></td>
+                  <td><%= identification.sex %></td>
+                  <td><%= identification.address %></td>
+                  <td><%= identification.issued_date %></td>
+                  <td><%= identification.expiry_date %></td>
+          </tr><br>
+                 <% end %>
+              <% end %>
+    </table>
+    <!--<h6> <%= @user.username %> - <a href=/logout>Log out</a></h6>-->
+  </div>
+</div>
+
+

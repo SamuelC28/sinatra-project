@@ -1,0 +1,41 @@
+<div class="container">
+      <div class="table-responsive text-center">
+          <h6>List Of All Citizens Our Records:</h6>
+      </div>
+      <table class="table table-sm table-info">
+         <thead class="thead-dark">
+            <tr>
+              <th>Firstname</th>
+              <th>Lastname</th>
+              <th>Date Of Birth</th> 
+              <th>County Of Birth</th> 
+              <th>Nationality</th>
+              <th>Sex</th>
+              <th>Address</th>
+              <th>Issued Date</th>
+              <th>Expiry Date</th>
+            </tr>
+         </thead>
+            <tbody>
+              <% Identification.all.each do |identification| %>
+              <tr>
+                <td><%= identification.firstname %></td>
+                <td><%= identification.lastname %></td>
+                <td><%= identification.date_of_birth %></td>
+                <td><%= identification.country_of_birth %></td>
+                <td><%= identification.nationality %></td>
+                <td><%= identification.sex %></td>
+                <td><%= identification.address %></td>
+                <td><%= identification.issued_date %></td>
+              </tr><br>
+              <% end %>
+            </tbody>
+      </table>
+</div> 
+
+      
+
+
+<!--<h6>Back to <a href=/menu>Menu </a></h6>-->
+
+

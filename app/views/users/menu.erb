@@ -1,0 +1,20 @@
+
+<% if Helpers.is_logged_in? session %>
+    <h5>Welcome, <%=@user.username%></h5>
+    <h6> <%= @user.username %> - <a href=/logout>Log out</a> </h6>
+<% end %>
+
+
+<div class="container text-center-left">
+    <h5>Choose An Option:</h5>
+
+    <h6>Create A <a href="/identifications/new">New Identification </a></h6>
+    <h6>Modify An <a href="/identifications/:id"> Identification </a></h6>
+    <h6>View All <a href="/identifications">Identification I Created </a></h6>
+    <h6>View Entire <a href='/ViewAllCitizens'>Identifications Created By All Employees</a></h6>
+
+    <h6>Back to <a href=/menu>Menu </a></h6>
+</div>
+
+
+

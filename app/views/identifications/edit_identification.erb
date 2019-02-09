@@ -1,0 +1,56 @@
+<div class="container">
+    <h2> Edit Identification </h2>      
+    
+    <form role="form" method="post" action="/identifications/<%=@identification.id%>">
+     <input id="hidden" type="hidden" name="_method" value="PATCH">
+      <div class="row"> 
+          <div class="form-group col-lg-6">
+                <label for="firstname">Firstname</label>
+                <input type="text" name="firstname" id="firstname" class="form-control" value="<%= @identification.firstname %>"/>
+          </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-lg-6">
+                <label for="lastname">Lastname</label>
+                <input type="text" name="lastname" id="lastname" class="form-control"  value="<%= @identification.lastname %>"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group col-lg-6 ">
+                <label for="date_of_birth">Date Of Birth</label>
+                <input type="text" name="date_of_birth" id="date_of_birth" class="form-control" value="<%= @identification.date_of_birth %>"/>
+            </div>
+        </div>
+         <div class="row">
+            <div class="form-group col-lg-6 ">
+                <label for="country_of_birth">Country Of Birth</label>
+                <input type="text" name="country_of_birth" id=""country_of_birth" class="form-control" value="<%= @identification.country_of_birth %>"/>
+            </div>
+        </div> 
+         <div class="row">
+            <div class="form-group col-lg-6 ">
+                <label for="sex">Sex</label>
+                <input type="text" name="sex" id="sex" class="form-control input-normal" value="<%= @identification.sex %>"/>
+            </div>
+        </div>
+         <div class="row">
+            <div class="form-group col-lg-6 ">
+                <label for="nationality">Nationality</label>
+                <input type="text" name="nationality" id="nationality" class="form-control input-normal" value="<%= @identification.nationality %>"/>
+            </div>
+        </div>
+         <div class="row">
+            <div class="form-group col-lg-6 ">
+                <label for="address">Address</label>
+                <input type="text" name="address" id="address" class="form-control input-normal" value="<%= @identification.address %>"/>
+            </div>
+        </div>     
+
+        
+        <div class="row">
+             <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+      
+      
+<h6>Back to <a href=/menu>Menu </a></h6>
+<h6> <%= @user.username %> - <a href=/logout>Log out</a></h6>

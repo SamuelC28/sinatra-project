@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="table-responsive">
+      <h2>Your Identification has been created successfully:</h2>
+      
+      <table class="table table-sm table-info">
+        <thead class="thead-dark">
+          <tr>
+            <th>Firstname</th>
+            <th>Lastname</th>
+            <th>Date Of Birth</th> 
+            <th>County Of Birth</th> 
+            <th>Nationality</th>
+            <th>Sex</th>
+            <th>Address</th>
+            <th>Issued Date</th>
+            <th>Expiry Date</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><%= @identification.firstname %></td>
+            <td><%= @identification.lastname %></td>
+            <td><%= @identification.date_of_birth %></td>
+            <td><%= @identification.country_of_birth %></td>
+            <td><%= @identification.nationality %></td>
+            <td><%= @identification.sex %></td>
+            <td><%= @identification.address %></td>
+            <td><%= @identification.issued_date %></td>
+          </tr>
+          </tbody>
+        </table>
+  </div> 
+
+
+  <form method="post" action="/identifications/<%=@identification.id%>/delete">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="submit" class='btn btn-danger btn-sm' role="button" value="Delete Identification">
+  </form>
+
+  <a class='btn btn-warning btn-sm' href="/identifications/<%=@identification.id%>/edit" role="button">Edit Identification </a>
+</div>
