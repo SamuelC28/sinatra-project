@@ -6,7 +6,7 @@ class Identification < ActiveRecord::Base
   validates :nationality, presence: true
   validates :sex, presence: true
   validates :address, presence: true
-  # validates :expiry_date, presence: true
+  validates :expiry_date, presence: true
   
   belongs_to :user
   
@@ -16,9 +16,9 @@ class Identification < ActiveRecord::Base
   #   self.expiry_date = issued_date + (365 * 5)
   # end
 
-  def self.expiry_date
-    issued_date + (365 * 5)
-  end
+  # def self.expiry_date
+  #   issued_date + (365 * 5)
+  # end
 
   def count_by_user
     self.count

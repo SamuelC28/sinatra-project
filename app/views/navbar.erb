@@ -1,12 +1,20 @@
 <!--<div class="container">-->
    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">About Us</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse justify-content-between" id="navbarNavAltMarkup">
     <div class="navbar-nav">
        <ul class="navbar-nav mr-auto">
+           
+            <li class="nav-item active">
+                  <img src="../images/oni2.png" alt="Oni picture logo" id="logo"> 
+            </li>  
+             <li class="nav-item active">
+                  <a class="navbar-brand" href="#">About Us</a> 
+            </li>  
+           
+            
             <li class="nav-item active">
                 <a class="nav-item nav-link active" href="/menu">Menu <span class="sr-only">(current)</span></a>
             </li>  
@@ -20,7 +28,7 @@
                 <a class="nav-item nav-link" href='/ViewAllCitizens'> View All IDs</a>
             </li>
             <li class="nav-item">
-             <a href='/logout' class="nav-item nav-link pull-right"> <%= @user.username %> - <strong>Log Out</strong></a>
+             <a href='/logout' class="nav-item nav-link pull-right" style ="float: left;"> <%= @user.username %> - <strong>Log Out</strong></a>
                 <!--<a class="nav-item nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>-->
             </li>
         </ul>

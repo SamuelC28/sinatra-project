@@ -8,7 +8,7 @@ class CreateIdentifications < ActiveRecord::Migration
       t.string :nationality
       t.string :sex
       t.string :address
-      # t.text :issued_date
+      t.text :issued_date
       t.text :expiry_date
       
      t.timestamps null: false

@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     erb :"users/show"
   end
   
+  #request the user's signup page
   get "/signup" do
     
     if Helpers.is_logged_in? session
@@ -15,7 +16,7 @@ class UsersController < ApplicationController
     end
   end
   
-
+  #prompt the user to signup and open the user session
   post "/signup" do
     @user = User.new params
     @user.save
@@ -24,26 +25,24 @@ class UsersController < ApplicationController
       Helpers.current_user session
       session[:user_id] = @user.id
       redirect "/menu"
-      puts user.inspect
+      # puts user.inspect
     else
-      # flash[:signup] = "Failed to signup, missing some parameters."
+      flash[:signup] = "Oops! you've let some blank fields!"
       redirect "/signup"
     end
   end
 
-
+ # request the menu if the user is logged in
   get '/menu' do
-    
-    # puts Helpers.current_user(session).username 
     if Helpers.is_logged_in? session
       @user = Helpers.current_user(session)
-     
       erb :"users/menu"
     else
       redirect "/login"
     end
   end
 
+  #post the user menu on the screen and promt the user to choose
   post '/menu' do
     # binding.pry
     if Helpers.is_logged_in? session
@@ -53,36 +52,7 @@ class UsersController < ApplicationController
     end
   end
 
-
-  # get '/new/identifications' do
-  #  if Helpers.is_logged_in? session
-  #    erb :'identifications/new_identification'
-  #  else
-  #    redirect to '/login'
-  #  end
-  # end
-  # get "/signup" do
-  #   # binding.pry
-  #   if Helpers.is_logged_in? session
-  #     redirect '/identifications'
-  #   else
-  #     erb :"users/signup"
-  #   end
-  # end
-  
-  # post "/signup" do
-  #   # binding.pry
-  #   user = User.new params
-
-  #   if user.save
-  #     session[:user_id] = user.id    
-  #     redirect "/identifications"
-  #   else
-  #     # flash[:signup] = "Failed to signup, missing some parameters."
-  #     redirect "/signup"
-  #   end
-  # end
-
+  #request for the log in page if the user in not logged in
   get '/login' do
     if Helpers.is_logged_in? session
       redirect '/menu'
@@ -91,7 +61,7 @@ class UsersController < ApplicationController
     end
   end
   
-
+  #show the log in page and open a session if user info are authentic
   post '/login' do
     # binding.pry
     user = User.find_by(username: params[:username]) unless params[:username].empty?
@@ -100,16 +70,16 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       redirect "/menu"
     else
-      # flash[:error_login] = "Failed to login, something wrong with yours informations."
+      flash[:error_login] = "Your Email address or password is wrong!"
       redirect "/login"
     end
   end
 
+  #prompt the user to logout
   get '/logout' do
     if Helpers.is_logged_in? session
       session.clear
       redirect to '/'
     end
   end
-
 end

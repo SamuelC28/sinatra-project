@@ -1,11 +1,11 @@
 class IdentificationsController < ApplicationController
-
+  use Rack::Flash
+  
   get '/identifications' do   
     if Helpers.is_logged_in? session 
       @user = Helpers.current_user session
       
       puts @user.id.inspect
-      # puts @identification.inspect
       erb :"identifications/identifications"
     else
       redirect "/login"
@@ -24,28 +24,26 @@ class IdentificationsController < ApplicationController
   post '/identifications' do
     if Helpers.is_logged_in? session
       @identification = Identification.find_by_id(params[:user_id])
-      # puts @identification == @user[1]
       
-      # @user = Helpers.current_user session
-      # if @identification == @user
-      #  current_date = Date.today
-      #  set_expiry_date = current_date + (365 * 5)
       @user = Helpers.current_user(session)
       # puts @user.inspect
-      identification = Helpers.current_user(session).identifications.build(firstname: params[:firstname], lastname: params[:lastname], date_of_birth: params[:date_of_birth], country_of_birth: params[:country_of_birth], nationality: params[:nationality], sex: params[:sex], address: params[:address])
-      puts identification.user_id.inspect
+      identification = Helpers.current_user(session).identifications.build(firstname: params[:firstname], lastname: params[:lastname], date_of_birth: params[:date_of_birth], country_of_birth: params[:country_of_birth], nationality: params[:nationality], sex: params[:sex], address: params[:address], expiry_date: params[:expiry_date] = Date.today + (365 * 5))
+      puts identification.inspect
+      
       if identification.save && identification.user == @user
         # puts identification.inspect
         redirect to "/identifications/#{identification.id}"
       else
+        flash[:error_create_id] = "You have missed 1 or several fields. Try again!"
         redirect to "/identifications/new"
       end
     else
+      flash[:error_login] = "You did not log in yet!"
       redirect to '/login'
     end
   end
 
-  # View all identifications crearted by all users
+  # View all identifications created by all users
   get '/ViewAllCitizens' do
     if Helpers.is_logged_in? session
       @user = Helpers.current_user session
@@ -59,6 +57,7 @@ class IdentificationsController < ApplicationController
     if Helpers.is_logged_in? session
       erb :"identifications/all_registered_citizens"
     else
+      flash[:error_login] = "You did not log in yet!"
       redirect to '/login'
     end
   end
@@ -85,12 +84,11 @@ class IdentificationsController < ApplicationController
       # if @identification && @identification.user == Helpers.current_user(session)
        erb :'identifications/edit_identification'
      else
+      flash[:error_edit] = "You have no right to edit this indetification!"
        redirect to '/identifications'
      end
-  #  else
-  #    redirect to '/login'
-  end
-  end
+    end
+   end
 
   patch '/identifications/:id' do
     if Helpers.is_logged_in? session
@@ -118,6 +116,7 @@ class IdentificationsController < ApplicationController
       end
       redirect to '/identifications'
     else
+      flash[:error_delete] = "You have no right to delete this indetification!"
       redirect to '/login'
     end
   end

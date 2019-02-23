@@ -1,8 +1,8 @@
 <div class="container">
-      <div class="table-responsive text-center">
+      <div class="table-responsive text-center" id="tb">
           <h6>List Of All Citizens Our Records:</h6>
       </div>
-      <table class="table table-sm table-info">
+      <table class="table table-sm table-info" >
          <thead class="thead-dark">
             <tr>
               <th>Firstname</th>
@@ -27,6 +27,7 @@
                 <td><%= identification.sex %></td>
                 <td><%= identification.address %></td>
                 <td><%= identification.issued_date %></td>
+                <td><%= identification.expiry_date %></td>
               </tr><br>
               <% end %>
             </tbody>

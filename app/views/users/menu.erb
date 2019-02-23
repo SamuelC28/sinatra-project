@@ -1,20 +1,19 @@
 
-<% if Helpers.is_logged_in? session %>
-    <h5>Welcome, <%=@user.username%></h5>
-    <h6> <%= @user.username %> - <a href=/logout>Log out</a> </h6>
-<% end %>
+
+<div class="bg-imageusers"></div>
 
 
-<div class="container text-center-left">
-    <h5>Choose An Option:</h5>
-
-    <h6>Create A <a href="/identifications/new">New Identification </a></h6>
-    <h6>Modify An <a href="/identifications/:id"> Identification </a></h6>
-    <h6>View All <a href="/identifications">Identification I Created </a></h6>
-    <h6>View Entire <a href='/ViewAllCitizens'>Identifications Created By All Employees</a></h6>
-
-    <h6>Back to <a href=/menu>Menu </a></h6>
+<div class="l-form">
+<div class="container">
+    <% if Helpers.is_logged_in? session %>
+        <h5>Welcome, <%=@user.username%></h5>
+    <% end %>
+     <h5>Choose An Option:</h5>
+     <h6 class="display-6">Create A <a class="btn btn-success btn-sm" href="/identifications/new">New Identification </a></h6>
+     <h6 class="display-6">Modify An <a class="btn btn-success btn-sm" href="/identifications/:id"> Identification </a></h6>
+     <h6 class="display-6">View All <a class="btn btn-success btn-sm" href="/identifications">Identification I Created </a></h6>
+     <h6 class="display-6">View Entire <a class="btn btn-success btn-sm" href='/ViewAllCitizens'>Identifications Created By All Employees</a></h6>
+</div>   
 </div>
-
 
 
