@@ -1,7 +1,8 @@
-<%# <% if (Helpers.is_logged_in? session) && (@identification == @user) %> 
+
 
 <div class="container">
-  <div class="table-responsive text-center">
+  <div class="table-responsive text-center"> <br><br><br>
+
     <h3>Entire Identications Created by <%= @user.username %>:</h3>
   </div>
     <table class="table table-sm table-info">
@@ -33,11 +34,10 @@
                   <td><%= identification.address %></td>
                   <td><%= identification.issued_date %></td>
                   <td><%= identification.expiry_date %></td>
-          </tr><br>
-                 <% end %>
-              <% end %>
+                <% end %>
+          </tr>
+           <% end %>
     </table>
-    <!--<h6> <%= @user.username %> - <a href=/logout>Log out</a></h6>-->
   </div>
 </div>
 
